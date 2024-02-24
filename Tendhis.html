@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TENDHIS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="estilo_tab.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="css/leaflet.extra-markers.min.css">
+
+    <link href="stylemap.css" rel="stylesheet">
+
+</head>
+<body>
+    
+  <div class="container "  style="justify-content: space-evenly; flex-wrap: wrap;" >
+     <div class="row " style="margin-top: 10px; text-align: center;">
+       <div class="col" >
+          <img class="img-fluid" style="max-width:200px;"  src="Imagenes/Logo_Ministerio.png" alt="" >
+       </div>
+       <div class="col " style="align-content: right: inherit;" >
+          <p>Financiado por:</p> 
+          <img class="img-fluid" style="max-width:100px;"  src="Imagenes/Logo_Global Water.jpeg" alt="">
+       </div>
+       <div class="col">
+          <img class="img-fluid p-2" style="max-width:100px;" src="Imagenes/Logo_NDC.jpeg" alt="">
+       </div>
+      </div>
+      <div class="cards" style=" width: 100%; height: auto; text-align: center;">
+        <div class="contenedor-imagen" style="margin-top: 60px; text-align: center; ">
+          <img style="width: 45%;" src="Imagenes/Logo_Azul_Tendhis.png" >
+        </div>
+      </div>
+  </div>
+        
+  
+    <!--
+   <div class="container2 ">
+    <div class="tab-bar">
+      <div data-num="1" class="tab wave dark bg-dark">
+        <div href="#" data-filter=".Estacion" class="active">
+          DATOS DE ESTACIÓN
+        </div>
+      
+      </div>
+      <div data-num="2" class="tab wave dark">DATOS PISCO</div>
+      <div data-num="3" class="tab wave dark">DATOS DE ESCENARIO</div>
+      <div class="indicator"></div>
+    </div>
+
+   </div>
+-->
+
+   <div class="container2">
+    <div class="menu">
+        <p data-target="#datoestacion">Datos de Estación</p>
+        <p data-target="#datopisco">Datos PISCO</p>
+        <p data-target="#datoescenario">Datos de Escenario</p>
+      </div>
+    
+        <div class="panels" style="border: 2px solid black; padding: 10px;">
+        
+            <div panel-content id="datoestacion" class="active">
+                <h5>Variable Meteorológica</h5>
+                <div class="row" style="margin: 40px;">
+                    <div class="flex" style="flex-direction: colum; display: flex; justify-content: space-between;">
+                        <form>
+                            <input id="iprecipitacion" type="radio" name="select_variable" value="precipitacion">
+                            <label for="iprecipitacion">Precipitación  </label>
+                            
+                            <input id="itempmax" type="radio" name="select_variable" value="temperaturamax">
+                            <label for="itempmax">Temperatura Máxima</label>
+                
+                            <input id="itempmin" type="radio" name="select_variable" value="temperaturamin">
+                            <label for="itempmin">Temperatura Minima  </label>
+                        
+                            <input id="itempme" type="radio" name="select_variable" value="temperaturame">
+                            <label for="itempme">Temperatura Media  </label>
+                        </form>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0"> 
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TN</option>
+                                        <option value="1">TNx</option>
+                                        <option value="1">TNn</option>
+                                        <option value="1">TR</option>
+                                        <option value="1">FD</option>
+                                        <option value="1">TN10p</option>
+                                        <option value="2">TN90p</option>
+                                        <option value="3">CSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TX</option>
+                                        <option value="2">TXx</option>
+                                        <option value="3">TXn</option>
+                                        <option value="4">SU</option>
+                                        <option value="5">ID</option>
+                                        <option value="6">TX10p</option>
+                                        <option value="7">TX90p</option>
+                                        <option value="8">WSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">DTR</option>                                                    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">PRCPTOT</option>
+                                        <option value="2">SDII</option>
+                                        <option value="3">CWD</option>
+                                        <option value="4">CDD</option>
+                                        <option value="5">R10mm</option>
+                                        <option value="6">R20mm</option>
+                                        <option value="7">RX1day</option>
+                                        <option value="8">RX5day</option>
+                                        <option value="9">R95pTOT</option>
+                                        <option value="10">R99pTOT</option>                                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+            
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-3 mb-md-0"> 
+                            <select class="custom-select px-4" style="height: 47px;">
+                                <option selected>Seleccionar periodo</option>
+                                <option value="1">TN</option>
+                                <option value="1">TNx</option>
+                                <option value="1">TNn</option>
+                                <option value="1">TR</option>
+                                <option value="1">FD</option>
+                                <option value="1">TN10p</option>
+                                <option value="2">TN90p</option>
+                                <option value="3">CSDI</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-3">
+                        <button>Generar gráficas</button>
+                    </div>
+                </div>
+
+            </div>
+        
+            <div panel-content id="datopisco">
+                <h5>Variable Meteorológica</h5>
+                <div class="row">
+                    <div class="flex" style="flex-direction: colum; justify-content: space-evenly;">
+                        <form>
+                            <input id="iprecipitacion" type="radio" name="select_variable" value="precipitacion">
+                            <label for="iprecipitacion">Precipitación</label>
+                    
+                            <input id="itempmax" type="radio" name="select_variable" value="temperaturamax">
+                            <label for="itempmax">Temperatura Máxima</label>
+                
+                            <input id="itempmin" type="radio" name="select_variable" value="temperaturamin">
+                            <label for="itempmin">Temperatura Minima</label>
+                        
+                            <input id="itempme" type="radio" name="select_variable" value="temperaturame">
+                            <label for="itempme">Temperatura Media</label>
+                        </form>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0"> 
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TN</option>
+                                        <option value="1">TNx</option>
+                                        <option value="1">TNn</option>
+                                        <option value="1">TR</option>
+                                        <option value="1">FD</option>
+                                        <option value="1">TN10p</option>
+                                        <option value="2">TN90p</option>
+                                        <option value="3">CSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TX</option>
+                                        <option value="2">TXx</option>
+                                        <option value="3">TXn</option>
+                                        <option value="4">SU</option>
+                                        <option value="5">ID</option>
+                                        <option value="6">TX10p</option>
+                                        <option value="7">TX90p</option>
+                                        <option value="8">WSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">DTR</option>                                                    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">PRCPTOT</option>
+                                        <option value="2">SDII</option>
+                                        <option value="3">CWD</option>
+                                        <option value="4">CDD</option>
+                                        <option value="5">R10mm</option>
+                                        <option value="6">R20mm</option>
+                                        <option value="7">RX1day</option>
+                                        <option value="8">RX5day</option>
+                                        <option value="9">R95pTOT</option>
+                                        <option value="10">R99pTOT</option>                                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div>
+                    <label for="ilatitud">Latitud: </label>
+                    <input id="ilatitud" type="text" name="latitud">
+                    <label for="ilongitud">Longitud: </label>
+                    <input id="ilongitud" type="text" name="longitud">
+                </div>
+            
+                <div class="row" >
+                    <div class="col-md-3">
+                        <div class="mb-3 mb-md-0"> 
+                            <select class="custom-select px-4" style="height: 47px;">
+                                <option selected>Seleccionar periodo</option>
+                                <option value="1">TN</option>
+                                <option value="1">TNx</option>
+                                <option value="1">TNn</option>
+                                <option value="1">TR</option>
+                                <option value="1">FD</option>
+                                <option value="1">TN10p</option>
+                                <option value="2">TN90p</option>
+                                <option value="3">CSDI</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-3">
+                        <button>Generar gráficas</button>
+                    </div>
+                </div>
+
+
+            </div>
+        
+            <div panel-content id="datoescenario">
+                <h5>Variable Meteorológica</h5>
+                <div class="row">
+                    <div class="flex" style="flex-direction: colum; justify-content: space-evenly;">
+                        <form>
+                            <input id="iprecipitacion" type="radio" name="select_variable" value="precipitacion">
+                            <label for="iprecipitacion">Precipitación</label>
+                    
+                            <input id="itempmax" type="radio" name="select_variable" value="temperaturamax">
+                            <label for="itempmax">Temperatura Máxima</label>
+                
+                            <input id="itempmin" type="radio" name="select_variable" value="temperaturamin">
+                            <label for="itempmin">Temperatura Minima</label>
+                        
+                            <input id="itempme" type="radio" name="select_variable" value="temperaturame">
+                            <label for="itempme">Temperatura Media</label>
+                        </form>
+        
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0"> 
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TN</option>
+                                        <option value="1">TNx</option>
+                                        <option value="1">TNn</option>
+                                        <option value="1">TR</option>
+                                        <option value="1">FD</option>
+                                        <option value="1">TN10p</option>
+                                        <option value="2">TN90p</option>
+                                        <option value="3">CSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">TX</option>
+                                        <option value="2">TXx</option>
+                                        <option value="3">TXn</option>
+                                        <option value="4">SU</option>
+                                        <option value="5">ID</option>
+                                        <option value="6">TX10p</option>
+                                        <option value="7">TX90p</option>
+                                        <option value="8">WSDI</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">DTR</option>                                                    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Seleccionar indice</option>
+                                        <option value="1">PRCPTOT</option>
+                                        <option value="2">SDII</option>
+                                        <option value="3">CWD</option>
+                                        <option value="4">CDD</option>
+                                        <option value="5">R10mm</option>
+                                        <option value="6">R20mm</option>
+                                        <option value="7">RX1day</option>
+                                        <option value="8">RX5day</option>
+                                        <option value="9">R95pTOT</option>
+                                        <option value="10">R99pTOT</option>                                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            
+                <div>
+                    <label for="ilatitud">Latitud: </label>
+                    <input id="ilatitud" type="text" name="latitud">
+                    <label for="ilongitud">Longitud: </label>
+                    <input id="ilongitud" type="text" name="longitud">
+                </div>
+            
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-3 mb-md-0"> 
+                            <select class="custom-select px-4" style="height: 47px;">
+                                <option selected>Seleccionar periodo</option>
+                                <option value="1">TN</option>
+                                <option value="1">TNx</option>
+                                <option value="1">TNn</option>
+                                <option value="1">TR</option>
+                                <option value="1">FD</option>
+                                <option value="1">TN10p</option>
+                                <option value="2">TN90p</option>
+                                <option value="3">CSDI</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="mb-3 mb-md-0">
+                            <select class="custom-select px-4" style="height: 47px;">
+                                <option selected>Seleccionar escenario</option>
+                                <option value="1">Multimodelo Historical</option>
+                                <option value="2">Multimodelo RCP B.5</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button>Generar gráficas</button>
+                    </div>
+                </div>
+
+            </div>
+
+        
+        </div>
+
+        
+        <script src="script_tab.js"></script>
+   </div>
+
+    <div class="container2">
+        <div class="panels">
+            <div panel-content id="datoestacion" class="active">
+                <h5>Variable Meteorológica</h5>
+                <div class="col-md-3">
+                    <div id="mi_mapa" style="height:500px; width: 400px;"> </div>
+
+                    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+                    <script>
+                        let map =L.map('mi_mapa').setView([-8.895021, -76.435547],5)
+                    
+                        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&IIJR; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> SENAMHI,  <a href="https://www.hotosm.org/" target="_blank"></a> <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+                        }).addTo(map);
+                        L.marker([-5.0320,-80.2263]).addTo(map).bindPopup("Estacion de Piura")
+                        L.marker([-6.684158, -78.537598]).addTo(map).bindPopup("Estacion de Cajamarca")
+                        L.marker([-7.926408, -78.515625]).addTo(map).bindPopup("Estacion de La Libertad")
+                        L.marker([-14.227779, -75.688477]).addTo(map).bindPopup("Estacion de Ica")
+                        L.marker([-12.099081, -76.45752]).addTo(map).bindPopup("Estacion de Lima")
+                        L.marker([-4.840575, -78.076172]).addTo(map).bindPopup("Estacion de Cajamarca")
+                        L.marker([-15.689484, -72.994995]).addTo(map).bindPopup("Estacion de Arequipa")
+                        L.marker([-16.908589, -70.678711]).addTo(map).bindPopup("Estacion de Moquegua")
+                        L.marker([-9.469607, -77.995606]).addTo(map).bindPopup("Estacion de Ancash")
+                        L.marker([-7.926408, -78.515625]).addTo(map).bindPopup("Estacion de La Libertad")
+                        map.on('click',onMapClick)
+                        function onMapClick(e){
+                        alert("Posición: " + e.latlng)
+                        }
+                    </script>
+                    <script src='https://unpkg.com/wicg-inert@latest/dist/inert.min.js'></script>
+                    <script src="js/leaflet.extra-markers.min.js"></script>
+                </div>
+            </div>
+            <div panel-content id="datopisco">
+                <h5>Variable Meteorol</h5>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row-md-4">
+                    <h6>Tendencia Anual</h6>
+                </div>
+                <div class="row-md-4">
+                    <p>0.08 °C/decNo significativoIntervalo de confianza: [-0.033,0.192] °C/dec</p>
+                </div>
+                <div class="container-fluid">
+
+                </div>
+
+            </div>
+         
+        </div>
+        <div class="row-md-4" style="display: flex;">
+            <div class="col-md-6">
+                <div class="row-md-4">
+                    <h6>Tendencia Anual</h6>
+                </div>
+                <div class="row-md-4">
+                    <p>0.08 °C/decNo significativoIntervalo de confianza: [-0.033,0.192] °C/dec</p>
+                </div>
+                <div class="row-md-4">
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row-md-4">
+                    <h6>Tendencia Anual</h6>
+                </div>
+                <div class="row-md-4">
+                    <p>0.08 °C/decNo significativoIntervalo de confianza: [-0.033,0.192] °C/dec</p>
+                </div>
+                <div class="row-md-4">
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+	
+   <!--
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                    
+                    <div class="container booking mt-5 pb-5">
+                        
+                        <div class="container pb-5">
+                            <div class="" style="padding: 10px;">
+                                <div class="row align-items-center" style="min-height: 60px;">
+                                    
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="mb-3 mb-md-0"> 
+                                                    <select class="custom-select px-4" style="height: 47px;">
+                                                        <option selected>Seleccionar indice</option>
+                                                        <option value="1">TN</option>
+                                                        <option value="1">TNx</option>
+                                                        <option value="1">TNn</option>
+                                                        <option value="1">TR</option>
+                                                        <option value="1">FD</option>
+                                                        <option value="1">TN10p</option>
+                                                        <option value="2">TN90p</option>
+                                                        <option value="3">CSDI</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3 mb-md-0">
+                                                    <select class="custom-select px-4" style="height: 47px;">
+                                                        <option selected>Seleccionar indice</option>
+                                                        <option value="1">TX</option>
+                                                        <option value="2">TXx</option>
+                                                        <option value="3">TXn</option>
+                                                        <option value="4">SU</option>
+                                                        <option value="5">ID</option>
+                                                        <option value="6">TX10p</option>
+                                                        <option value="7">TX90p</option>
+                                                        <option value="8">WSDI</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3 mb-md-0">
+                                                    <select class="custom-select px-4" style="height: 47px;">
+                                                        <option selected>Seleccionar indice</option>
+                                                        <option value="1">DTR</option>                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="mb-3 mb-md-0">
+                                                    <select class="custom-select px-4" style="height: 47px;">
+                                                        <option selected>Seleccionar indice</option>
+                                                        <option value="1">PRCPTOT</option>
+                                                        <option value="2">SDII</option>
+                                                        <option value="3">CWD</option>
+                                                        <option value="4">CDD</option>
+                                                        <option value="5">R10mm</option>
+                                                        <option value="6">R20mm</option>
+                                                        <option value="7">RX1day</option>
+                                                        <option value="8">RX5day</option>
+                                                        <option value="9">R95pTOT</option>
+                                                        <option value="10">R99pTOT</option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container pb-5">
+                        <div class="" style="padding: 10px;">
+                            <div class="row align-items-center" style="min-height: 60px;">
+                                
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="mb-3 mb-md-0"> 
+                                                <select class="custom-select px-4" style="height: 47px;">
+                                                    <option selected>Seleccionar periodo</option>
+                                                    <option value="1">TN</option>
+                                                    <option value="1">TNx</option>
+                                                    <option value="1">TNn</option>
+                                                    <option value="1">TR</option>
+                                                    <option value="1">FD</option>
+                                                    <option value="1">TN10p</option>
+                                                    <option value="2">TN90p</option>
+                                                    <option value="3">CSDI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3 mb-md-0">
+                                                <select class="custom-select px-4" style="height: 47px;">
+                                                    <option selected>Seleccionar escenario</option>
+                                                    <option value="1">TX</option>
+                                                    <option value="2">TXx</option>
+                                                    <option value="3">TXn</option>
+                                                    <option value="4">SU</option>
+                                                    <option value="5">ID</option>
+                                                    <option value="6">TX10p</option>
+                                                    <option value="7">TX90p</option>
+                                                    <option value="8">WSDI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button>Generar gráficas</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+              </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div id="mi_mapa" style="height:500px; width: 400px;"> </div>
+        
+                     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+                    <script>
+                        let map =L.map('mi_mapa').setView([-5.0320,-80.2263],5)
+                       
+                        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&IIJR; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> SENAMHI,  <a href="https://www.hotosm.org/" target="_blank"></a> <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+                        }).addTo(map);
+                        L.marker([-5.0320,-80.2263]).addTo(map).bindPopup("Estacion de Piura")
+                          map.on('click',onMapClick)
+                          function onMapClick(e){
+                          alert("Posición: " + e.latlng)
+                        }
+                    </script>
+                    <script src='https://unpkg.com/wicg-inert@latest/dist/inert.min.js'></script>
+                    <script src="js/leaflet.extra-markers.min.js"></script>
+                </div>
+              
+            </div>
+             
+        </div>
+       
+      </div>
+    </div> -->
+ 
+   <script type="text/javascript" src="script2.js"></script>
+   
+
+
+     
+   <!-- Footer Start -->
+   <div class="footer container-fluid position-center  py-5" style="background-color: #0E3B70;">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-7 col-s-6 pr-lg-2 mb-5 ">
+                <a href="index.html" class="navbar-brand ">
+                    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.4808831854252!2d-77.04728423104993!3d-12.079196316310998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8f0c2c73d79%3A0xf1d42b91641910c4!2sSENAMHI!5e0!3m2!1ses!2spe!4v1708294417695!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </a>
+                
+            </div>
+            <div class="col-lg-5 pr-lg-2 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="mb-3 text-white">Contáctenos</h1>
+                </a>
+                <h5 class="text-white">SENAMHI - Sede Central</h5>
+                <a>Jr.Cahuide 785,Jesús María - Lima</a>
+                <br><a><b class="mr-2 text-white">Central Telefónica:</b> (01)614 1414</a>
+                <br> <a><b class="mr-2 text-white">Atención al ciudadano:</b> (01) 470 2867 / (01) 998 948 805</a>
+                <br><a><b class="mr-2 text-white">Pronóstico del tiempo:</b> (01) 265 8798 / (01) 996 369 766</a>
+                <br><a><b class="mr-2 text-white">Consultas:</b>atencionalciudadano@senamhi.gob.pe</a>
+                <br><a><b class="text-white">Horario de atención:</b></a>
+                <br><a>Atención al ciudadano: De lunes a viernes de 8:30 a 17:15 Hrs.</a>
+                <br><a>Mesa de partes: De lunes a viernes de 8:30 a 16:30 Hrs.</a>
+                <a><span class="text-white">Registra tus documentos:</span> mesadepartes@senamhi.gob.pe</a>
+                <br><a><b class="text-white">Consulta tu trámite:</b> (01) 982 958 271</a>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="btn btn-lg btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-lg-square mr-2" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-lg btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid position-relative py-4"  style="background-color: #062243;">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-sm-4 mb-5">
+                <h5 class="text-white text-uppercase mb-4">Institución</h5>
+                <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>¿Quienes somos?</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Organigrama</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Funcionarios</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sedes</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Normas Emitidas</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Control Interno</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Código de Ética</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Convocatorias de Empleo</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Programas y proyectos</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Prensa</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Intranet</a>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-5">
+                <h5 class="text-white text-uppercase mb-4">Herramientas</h5>
+                <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Infraestructura de Datos Espaciales del SENAMHI PERÚ-IDESEP</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Análisis Meteorológicos</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Artículos Científicos</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Vigilancia Atmosférica de Incendios Forestales</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Vigilancia de Volcanes</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Cambio Climático</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Indicadores climáticos</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Versión Web Anterior</a>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-5">
+                <h5 class="text-white text-uppercase mb-4">Enlaces de Interés</h5>
+                <div class="d-flex flex-column justify-content-start">
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Integridad y Transparencia durante la emergencia sanitaria</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Ministerio del Ambiente</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>OMM</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Anuncios OMM</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Portal del Estado Peruano</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Congreso de la República</a>
+                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>RNSDD</a>
+                <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Atlas Internacional de Nubes - Manual de Observación de nubes y otros meteoros</a>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<div class="container-fluid  text-light border-top py-4" style="border-color: violet !important; background-color: rgb(129, 78, 224);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white">&copy; <a href="#">TENDHIS</a>. V2.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <p class="m-0 text-white">Diseñado por <a href="https://htmlcodex.com">Iris Juscamaita Rico</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+</body>
+</html>
